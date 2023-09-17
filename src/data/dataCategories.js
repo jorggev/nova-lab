@@ -1,0 +1,10 @@
+export default [
+  "OBSTETRICIA",
+  "PSICOLOGíA",
+  "GINECOLOGÍA",
+  "NUTRICIÓN",
+  "PEDIATRÍA",
+  "OFTALMOLOGÍA",
+  "CARDIOLOGIA",
+  "NEUROLOGIA",
+]

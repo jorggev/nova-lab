@@ -6,4 +6,7 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
   },
+  listContainer: {
+    alignItems: "center",
+  }
 });

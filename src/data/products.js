@@ -5,17 +5,9 @@ export default [
     description:
       "Médica especialista en ginecologia y obstetricia de bajo, mediano y alto riesgo.",
     price: 4000,
-    rating: 4.69,
     brand: "Obstetricia",
     category: "OBSTETRICIA",
-    thumbnail: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-    images: [
-      "https://i.dummyjson.com/data/products/1/1.jpg",
-      "https://i.dummyjson.com/data/products/1/2.jpg",
-      "https://i.dummyjson.com/data/products/1/3.jpg",
-      "https://i.dummyjson.com/data/products/1/4.jpg",
-      "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-    ],
+    images: ["https://i.dummyjson.com/data/products/3/1.jpg"],
   },
   {
     id: 2,
@@ -23,16 +15,9 @@ export default [
     description:
       "ATIENDO ADULTOS. ANGUSTIAS, PROBLEMAS EN EL VINCULO CON EL OTRO: PAREJA/S. CONYUGE/S. ATAQUES DE PANICO. ANSIEDAD. FOBIAS. OBSESIONES. HISTERIAS",
     price: 4400,
-    rating: 4.44,
     brand: "Psicología",
-    category: "PSICOLOGíA",
-    thumbnail: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-    images: [
-      "https://i.dummyjson.com/data/products/2/1.jpg",
-      "https://i.dummyjson.com/data/products/2/2.jpg",
-      "https://i.dummyjson.com/data/products/2/3.jpg",
-      "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-    ],
+    category: "PSICOLOGÍA",
+    images: ["https://i.dummyjson.com/data/products/3/1.jpg"],
   },
   {
     id: 3,
@@ -40,10 +25,8 @@ export default [
     description:
       "-Lic. Psicología UBA. Ayudante de Cátedra Psicología Ética y DDHH UBA. Adolescentes y adultos.",
     price: 4500,
-    rating: 4.09,
     brand: "Psicología",
     category: "PSICOLOGíA",
-    thumbnail: "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
     images: ["https://i.dummyjson.com/data/products/3/1.jpg"],
   },
   {
@@ -52,10 +35,8 @@ export default [
     description:
       "Ginecologa y Obstetra. Especialista en Ginecologia Infantojuvenil y Pediatrica. Médica del Hospital Ramos Mejia y Hospital de Niños Ricardo Gutierrez - CABA. Atención de ginecologia especializada en adolescentes, anticoncepción y embarazos - IVE. Colocación de Diu / SIU e Implante Subdemico (Chip anticonceptivo)",
     price: 7700,
-    rating: 4.09,
     brand: "Ginecología",
     category: "GINECOLOGÍA",
-    thumbnail: "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/5/1.jpg",
       "https://i.dummyjson.com/data/products/5/2.jpg",
@@ -67,10 +48,8 @@ export default [
     title: "Lic. González Muguruza, Martin",
     description: "Nutrición. Obesidad y sobrepeso. Matrícula 2985",
     price: 3500,
-    rating: 4.57,
     brand: "Nutrición",
     category: "NUTRICIÓN",
-    thumbnail: "https://i.dummyjson.com/data/products/6/thumbnail.png",
     images: [
       "https://i.dummyjson.com/data/products/6/1.png",
       "https://i.dummyjson.com/data/products/6/2.jpg",
@@ -84,10 +63,8 @@ export default [
     description:
       "Me desempeño como nutricionista de atención clínica general, en TCA y en Nutrición deportiva. Soy docente universitaria y terciaria. Trabajo como nutricionista del plantel de Futsal de CASLA y de Sportivo Barracas. NOTA: La consulta no incluye el plan de alimentación. Esta práctica se abona aparte. La antropometría también es una práctica optativa. Cada práctica tiene su precio individual. Las consultas de seguimiento son de menor valor.",
     price: 2500,
-    rating: 4.25,
     brand: "Nutrición",
     category: "NUTRICIÓN",
-    thumbnail: "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/7/1.jpg",
       "https://i.dummyjson.com/data/products/7/2.jpg",
@@ -101,10 +78,8 @@ export default [
     description:
       "Médico Pediatra del Hospital Militar y medico de consultorios externos del Sanatorio Trinidad de Palermo y del IADT.",
     price: 5000,
-    rating: 4.43,
     brand: "Pediatría",
     category: "PEDIATRÍA",
-    thumbnail: "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/8/1.jpg",
       "https://i.dummyjson.com/data/products/8/2.jpg",
@@ -119,10 +94,8 @@ export default [
     description:
       "Médico Universidad de Buenos Aires. Título de Médico Especialista en Pediatría otorgado por el Ministerio de Salud de la Nación. Título de Médico Especialista en Pediatría otorgado por la Sociedad Argentina de Pediatría.",
     price: 6000,
-    rating: 4.54,
     brand: "Pediatría",
     category: "PEDIATRÍA",
-    thumbnail: "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/9/1.jpg",
       "https://i.dummyjson.com/data/products/9/2.png",
@@ -137,10 +110,8 @@ export default [
     description:
       "Soy médico oftalmólogo, graduado de la Facultad de Medicina de la Universidad de Buenos Aires. Me formé en mi especialidad clínico quirúrgica en el Hospital Oftalmológico Santa Lucía de la Ciudad de Buenos Aires. Esto me brindó la posibilidad de desarrollarme en un centro de referencia nacional, donde continúo desempeñándome como médico de planta. Realicé y participé en múltiples cursos y jornadas para mantener una actualización continua con el objetivo de brindar la mejor calidad de atención. La atención médica está orientada a las consultas oftalmológicas generales, de áreas específicas como neurooftalmología, retina y plástica, y las alteraciones de la superficie ocular. En particular, me especializo tanto en el diagnóstico como en el tratamiento de enfermedades del segmento anterior.",
     price: 5500,
-    rating: 4.43,
     brand: "Oftalmología",
     category: "OFTALMOLOGÍA",
-    thumbnail: "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
     images: [
       "https://i.dummyjson.com/data/products/10/1.jpg",
       "https://i.dummyjson.com/data/products/10/2.jpg",
@@ -154,10 +125,8 @@ export default [
     description:
       "Especialista en Cardiologia. Miembro SAC. Actualizacion en medicina del deporte y rehabiltacion cardiovascular",
     price: 4600,
-    rating: 4.26,
     brand: "Cardiología",
     category: "CARDIOLOGIA",
-    thumbnail: "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/11/1.jpg",
       "https://i.dummyjson.com/data/products/11/2.jpg",
@@ -171,10 +140,8 @@ export default [
     description:
       "Especialista en Cardiología. Ecodoppler Cardíaco y Vasos de cuello. Staff de Cardiología Hospital Parmenio Piñero. Coordinadora Sector Ecodoppler cardiológico y vascular. Hospital Parmenio Piñero. CABA. Miembro del Area Corazón y Mujer. Sociedad Argentina de Cardiología.",
     price: 5200,
-    rating: 4,
     brand: "Cardiología",
     category: "CARDIOLOGIA",
-    thumbnail: "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/12/1.jpg",
       "https://i.dummyjson.com/data/products/12/2.jpg",
@@ -189,10 +156,8 @@ export default [
     description:
       "Soy médica graduada en la UBA, doy atención en las áreas de clínica médica, neurología y geriatría. Hago profundo énfasis en lo humano, brindo tiempo suficiente en cada consulta, doy a cada paciente la terapéutica que necesita. Excelente relación médico - paciente. Te espero en mí consultorio",
     price: 6500,
-    rating: 4.21,
     brand: "Neurología",
     category: "NEUROLOGIA",
-    thumbnail: "https://i.dummyjson.com/data/products/14/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/14/1.jpg",
       "https://i.dummyjson.com/data/products/14/2.jpg",
@@ -206,10 +171,8 @@ export default [
     description:
       "Neurología Clínica. Experto en diagnóstico y tratamiento de trastornos neurológicos. Apasionado por la investigación en enfermedades neurodegenerativas.",
     price: 5000,
-    rating: 4.7,
     brand: "Neurología",
     category: "NEUROLOGIA",
-    thumbnail: "https://i.dummyjson.com/data/products/15/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/15/1.jpg",
       "https://i.dummyjson.com/data/products/15/2.jpg",
@@ -224,10 +187,8 @@ export default [
     description:
       "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
     price: 5500,
-    rating: 4.83,
     brand: "Neurología",
     category: "NEUROLOGIA",
-    thumbnail: "https://i.dummyjson.com/data/products/16/thumbnail.jpg",
     images: [
       "https://i.dummyjson.com/data/products/16/1.png",
       "https://i.dummyjson.com/data/products/16/2.webp",

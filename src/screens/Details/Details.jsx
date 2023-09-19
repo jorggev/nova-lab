@@ -1,10 +1,11 @@
-import { Image, Pressable, Text, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import { Header } from '../../components'
 import React from 'react'
 import styles from './Details.style'
 
-const Details = ({ product }) => {
+const Details = ({ route }) => {
+  const { product } = route.params
   return (
     <View style={styles.container}>
       <Header title={'Detalles'} />
@@ -13,7 +14,7 @@ const Details = ({ product }) => {
       <Text style={styles.price}>{`Consulta $ ${product.price}`}</Text>
       <Text style={styles.bio}>BIOGRAFÍA</Text>
       <Text style={styles.description}>{product.description}</Text>
-      <Pressable style={styles.reserveContainer}><Text style={styles.reserve}>RESERVAR TURNO</Text></Pressable>
+      <TouchableOpacity style={styles.reserveContainer}><Text style={styles.reserve}>RESERVAR TURNO</Text></TouchableOpacity>
     </View>
   )
 }

@@ -1,10 +1,10 @@
 export default [
-  "OBSTETRICIA",
-  "PSICOLOGíA",
-  "GINECOLOGÍA",
-  "NUTRICIÓN",
-  "PEDIATRÍA",
-  "OFTALMOLOGÍA",
-  "CARDIOLOGIA",
-  "NEUROLOGIA",
-]
+  { title: "OBSTETRICIA" },
+  { title: "PSICOLOGÍA" },
+  { title: "GINECOLOGÍA" },
+  { title: "NUTRICIÓN" },
+  { title: "PEDIATRÍA" },
+  { title: "OFTALMOLOGÍA" },
+  { title: "CARDIOLOGIA" },
+  { title: "NEUROLOGIA" },
+];

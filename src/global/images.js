@@ -1,5 +1,9 @@
-export default {
-  obstetra1: require("../assets/images/obstetra1.jpg"),
-};
+export default [
+  {
+    obstetra: [require("../assets/images/obstetra.png")],
+  },
 
-
+  {
+    psicologo: [require("../assets/images/psicologo.png")],
+  },
+];

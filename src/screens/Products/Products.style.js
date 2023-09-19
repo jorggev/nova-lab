@@ -12,7 +12,7 @@ export default styles = StyleSheet.create({
   },
   textListContainer: {
     color: colors.secondary,
-    marginTop: 18,
+    marginTop: 5,
     padding: 5,
     backgroundColor: colors.primary,
     shadowColor: colors.tertiary,

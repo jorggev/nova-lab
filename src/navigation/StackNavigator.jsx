@@ -9,27 +9,24 @@ const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
   return (
-    <NavigationContainer >
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route, navigation }) => ({
-          headerShown: false,
-          header: () => (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={({ route, navigation }) => ({
+        headerShown: false,
+        /* header: () => (
             <View style={styles.generalHeader}>
-              <Button onPress={() => navigation.goBack()} title="Atras"/>
+              <Button onPress={() => navigation.goBack()} title="Go Back" />
               <Header title={route.name} />
             </View>
-          ),
-        })}
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Products" component={Products} />
-        <Stack.Screen name="Details" component={Details} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          ), */
+      })}
+    >
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Products" component={Products} />
+      <Stack.Screen name="Details" component={Details} />
+    </Stack.Navigator>
   );
 }
-
 export default StackNavigator;
 
 const styles = StyleSheet.create({
@@ -41,5 +38,5 @@ const styles = StyleSheet.create({
   },
   buttonBack: {
     marginTop: 50,
-  }
+  },
 });

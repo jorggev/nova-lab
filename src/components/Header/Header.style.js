@@ -4,14 +4,13 @@ import { colors } from "../../constants/colors";
 export default styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
-    height: 100,
-    paddingTop: 30,
+    height: 90,
     width: "100%",
     justifyContent: "center",
-    alignItems: "center",
   },
   text: {
-    fontSize: 30,
+    margin: 5,
+    fontSize: 20,
     color: colors.secondary,
     fontFamily: "MulishBlack",
   },

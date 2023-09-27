@@ -1,11 +1,11 @@
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { Header, SearchInput } from '../../components'
 import React, { useEffect, useState } from 'react'
-
 import allProducts from '../../data/products'
 import styles from './Products.style'
 
 const Products = ({ navigation, route }) => {
+
   const [arrProducts, setArrProducts] = useState([])
   const [keyword, setKeyword] = useState('')
   const { category } = route.params
@@ -35,7 +35,7 @@ const Products = ({ navigation, route }) => {
         <FlatList
           data={arrProducts}
           renderItem={({ item }) => (
-            <TouchableOpacity 
+            <TouchableOpacity
               onPress={() => navigation.navigate('Details', { product: item })}
             >
               <Text style={styles.textListContainer}>{item.title}</Text>

@@ -10,8 +10,10 @@ export default styles = StyleSheet.create({
   },
   text: {
     margin: 5,
-    fontSize: 20,
+    marginTop: 40,
+    fontSize: 30,
     color: colors.secondary,
     fontFamily: "MulishBlack",
+    textAlign: "center",
   },
 });

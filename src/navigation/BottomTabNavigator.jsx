@@ -37,7 +37,7 @@ function BottomTabNavigator() {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
-                            name="file-text"
+                            name="menu"
                             size={24}
                             color={focused ? colors.primary : colors.quaternary}
                         />
@@ -57,19 +57,6 @@ function BottomTabNavigator() {
                     ),
                 }}
             />
-            {/*             <BottomTab.Screen **********     USER SCREEN      **************
-                name="OrdersNav"
-                component={OrdersNavigator}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name="USER"
-                            size={24}
-                            color={focused ? colors.primary : colors.quaternary}
-                        />
-                    ),
-                }}
-            /> */}
         </BottomTab.Navigator>
     )
 }

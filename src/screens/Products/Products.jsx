@@ -1,52 +1,44 @@
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { Header, SearchInput } from '../../components'
 import React, { useEffect, useState } from 'react'
-import allProducts from '../../data/products'
 import styles from './Products.style'
 import { useSelector } from 'react-redux'
+import { useGetProductsByCategoryQuery } from '../../services/shiftsApi'
 
-const Products = ({ navigation, route }) => {
+const Products = ({ navigation }) => {
 
   const category = useSelector(state => state.shifts.categorySelected)
-
-
-  const [arrProducts, setArrProducts] = useState([])
   const [keyword, setKeyword] = useState('')
-  // const { category } = route.params
+  const { data, isLoading } = useGetProductsByCategoryQuery(category)
 
   useEffect(() => {
-    if (category) {
-      const products = allProducts.filter(
-        product => product.category === category
-      )
-      const productsFiltered = products.filter(product =>
+    console.log(category)
+    if (data) {
+      const productsFiltered = data.filter(product =>
         product.title.includes(keyword)
       )
-      setArrProducts(productsFiltered)
-    } else {
-      const productsFiltered = allProducts.filter(product =>
-        product.title.includes(keyword)
-      )
-      setArrProducts(productsFiltered)
     }
-  }, [category, keyword])
+  }, [])
+
 
   return (
     <View style={styles.container}>
       <Header title={category} />
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
-        <FlatList
-          data={arrProducts}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Details', { product: item })}
-            >
-              <Text style={styles.textListContainer}>{item.title}</Text>
-            </TouchableOpacity>
-          )}
-          keyExtractor={item => item.id}
-        />
+        {!isLoading && (
+          <FlatList
+            data={Object.values(data)}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Details', { product: item })}
+              >
+                <Text style={styles.textListContainer}>{item.title}</Text>
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item.id}
+          />
+        )}
       </View>
     </View>
   )

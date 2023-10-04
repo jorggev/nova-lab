@@ -4,6 +4,7 @@ import { Image, Text, TouchableOpacity, View, TouchableHighlight } from 'react-n
 import { Header } from '../../components'
 import { useDispatch, useSelector } from 'react-redux';
 import { reserveShifts } from '../../features/shifts/shiftSlice';
+import { usePostOrderMutation } from '../../services/shiftsApi';
 
 
 const Details = ({ route }) => {
@@ -15,23 +16,45 @@ const Details = ({ route }) => {
 
   const shifts = useSelector((state) => state.shifts.shifts);
 
+  const [triggerPost] = usePostOrderMutation();
+
   const handleTurnoSeleccionado = (index) => {
     setTurnoSeleccionado(index);
   };
 
-  const handleReserveTurno = () => {
-    if (!shifts.some((shift) => shift.id === product.id)) {
-      dispatch(reserveShifts({
-        id: product.id,
-        title: product.title,
-        dia: product.turnos[turnoSeleccionado].dia,
-        horario: product.turnos[turnoSeleccionado].horario,
-        price: product.price,
-        brand: product.brand,
-      })
-      );
+  const handleReserveTurno = async () => {
+    try {
+      if (!shifts.some((shift) => shift.id === product.id)) {
+        dispatch(reserveShifts({
+          id: product.id,
+          title: product.title,
+          dia: product.turnos[turnoSeleccionado].dia,
+          horario: product.turnos[turnoSeleccionado].horario,
+          price: product.price,
+          brand: product.brand,
+        })
+        );
+      }
+      const { data } = await triggerPost({
+        user: 'LoggedUser',
+        order: [
+          {
+            id: product.id,
+            title: product.title,
+            dia: product.turnos[turnoSeleccionado].dia,
+            horario: product.turnos[turnoSeleccionado].horario,
+            price: `$${product.price}`,
+            brand: product.brand,
+          },
+        ],
+      });
+      console.log(data);
+    }
+    catch (error) {
+      console.error('Error al reservar turno:', error.message);
     }
   };
+
 
 
   return (

@@ -1,10 +1,11 @@
 import React from 'react';
 import Feather from '@expo/vector-icons/Feather';
+import { Header } from '../../components'
+import styles from './Orders.styles'
 import { Pressable, Text, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteShifts } from '../../features/shifts/shiftSlice';
-import { Header } from '../../components'
-import styles from './Orders.styles'
+import { useDeleteOrderMutation } from '../../services/shiftsApi';
 
 const Orders = () => {
   const shifts = useSelector((state) => state.shifts.shifts);

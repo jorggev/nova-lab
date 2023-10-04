@@ -16,11 +16,26 @@ export const shiftsApi = createApi({
       query: (category) =>
         `products.json?orderBy="category"&equalTo="${category}"`,
     }),
+    postOrder: builder.mutation({
+      query: ({ ...order }) => ({
+        url: 'orders.json',
+        method: 'POST',
+        body: order,
+      }),
+    }),
+    deleteOrder: builder.mutation({
+      query: (orderId) => ({
+        url: `orders/${orderId}.json`,
+        method: 'DELETE',
+      }),
+    }),    
   }),
 });
 
 export const {
   useGetCategoriesQuery,
-  usegetProductsQuery,
+  useGetProductsQuery,
   useGetProductsByCategoryQuery,
+  usePostOrderMutation,
+  useDeleteOrderMutation,
 } = shiftsApi;

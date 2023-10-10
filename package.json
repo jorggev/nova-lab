@@ -22,7 +22,8 @@
     "react-native-screens": "~3.22.0",
     "react-redux": "^8.1.2",
     "expo-file-system": "~15.4.4",
-    "expo-image-picker": "~14.3.2"
+    "expo-image-picker": "~14.3.2",
+    "expo-location": "~16.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -11,9 +11,33 @@ const Orders = () => {
   const shifts = useSelector((state) => state.shifts.shifts);
   const dispatch = useDispatch();
 
-  const handleDeleteTurno = (id) => {
-    dispatch(deleteShifts(id));
+  /*   const handleDeleteTurno = (id) => {
+      dispatch(deleteShifts(id));
+    }; */
+
+
+  const [triggerDeleteOrder] = useDeleteOrderMutation();
+
+  // Modifica la función para usar la API directamente
+  const handleDeleteTurno = async (id) => {
+    try {
+      console.log('ID to delete:', id);
+
+      // Asegúrate de pasar el ID correcto a triggerDeleteOrder
+      const { data } = await triggerDeleteOrder(id);
+
+      console.log('Delete order response:', data);
+
+      if (data) {
+        dispatch(deleteShifts(id));
+        console.log('Shift deleted from Redux state');
+      }
+    } catch (error) {
+      console.error('Error al cancelar turno:', error.message);
+    }
   };
+
+
 
   return (
     <View style={styles.container}>

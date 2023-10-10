@@ -1,29 +1,27 @@
-import * as ImagePicker from "expo-image-picker";
+import * as ImagePicker from 'expo-image-picker'
+import { Image, Pressable, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCameraImage } from '../../features/auth/authSlice'
+import styles from './Profile.styles'
+import { usePostProfileImageMutation } from '../../services/shiftsApi'
 
-import { Image, Pressable, Text, View } from "react-native";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setCameraImage } from "../../features/auth/authSlice";
-import styles from "./Profile.styles";
-
-const Profile = () => {
-  const image = useSelector((state) => state.auth.imageCamera);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-  }, [image]);
+const Profile = ({ navigation }) => {
+  const image = useSelector(state => state.auth.imageCamera)
+  const { localId } = useSelector(state => state.auth)
+  const [triggerSaveProfileImage, result] = usePostProfileImageMutation()
+  const dispatch = useDispatch()
 
   const verifyCameraPermissions = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync()
     if (!granted) {
-      return false;
+      return false
     }
-    return true;
-  };
+    return true
+  }
 
   const pickImage = async () => {
-    const isCameraOk = await verifyCameraPermissions();
-
+    const isCameraOk = await verifyCameraPermissions()
     if (isCameraOk) {
       let result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -31,24 +29,36 @@ const Profile = () => {
         aspect: [9, 16],
         base64: true,
         quality: 0.4,
-      });
+      })
       if (!result.canceled) {
-        console.log(result.assets);
-        setImage(`data:image/jpeg;base64,${result.assets[0].base64}`);
+        console.log(result.assets)
+        dispatch(
+          setCameraImage(`data:image/jpeg;base64,${result.assets[0].base64}`)
+        )
       }
     }
-  };
+  }
 
   const confirmImage = () => {
-    dispatch(setCameraImage(image));
-  };
+    dispatch(setCameraImage(image))
+    triggerSaveProfileImage({ image, localId })
+    console.log(result)
+  }
 
   return (
     <View style={styles.container}>
-      {image ? null : (
+      {image ? (
         <Image
           source={{
-            uri: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            uri: image,
+          }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      ) : (
+        <Image
+          source={{
+            uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
           }}
           style={styles.image}
           resizeMode="cover"
@@ -57,8 +67,17 @@ const Profile = () => {
       <Pressable style={styles.cameraButton} onPress={pickImage}>
         <Text>Tomar Foto de perfil</Text>
       </Pressable>
+      <Pressable style={styles.cameraButton} onPress={confirmImage}>
+        <Text>Confirmar</Text>
+      </Pressable>
+      <Pressable
+        style={{ ...styles.cameraButton, marginTop: 20 }}
+        onPress={() => navigation.navigate('Location')}
+      >
+        <Text>Ir a mi ubiacion</Text>
+      </Pressable>
     </View>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useSignUpMutation } from '../../services/authApi'
 import styles from './Signup.styles'
 
-const Signup = () => {
+const Signup = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
@@ -45,7 +45,7 @@ const Signup = () => {
                     <Text style={styles.textSignup}>Registrarse</Text>
                 </Pressable>
                 <Text style={styles.questionAccount}>¿Ya tienes una cuenta?</Text>
-                <Pressable style={styles.loginButton}>
+                <Pressable style={styles.loginButton} onPress={() => navigation.navigate('Login')}>
                     <Text style={styles.textLogin}>Inciar sesión</Text>
                 </Pressable>
             </View>

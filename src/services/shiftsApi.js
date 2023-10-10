@@ -18,17 +18,29 @@ export const shiftsApi = createApi({
     }),
     postOrder: builder.mutation({
       query: ({ ...order }) => ({
-        url: 'orders.json',
-        method: 'POST',
+        url: "orders.json",
+        method: "POST",
         body: order,
       }),
     }),
     deleteOrder: builder.mutation({
       query: (orderId) => ({
         url: `orders/${orderId}.json`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
-    }),    
+    }),
+    getProfileImage: builder.query({
+      query: (localId) => `profileImages/${localId}.json`,
+    }),
+    postProfileImage: builder.mutation({
+      query: ({ image, localId }) => ({
+        url: `profileImages/${localId}.json`,
+        method: "PUT",
+        body: {
+          image: image,
+        },
+      }),
+    }),
   }),
 });
 
@@ -38,4 +50,6 @@ export const {
   useGetProductsByCategoryQuery,
   usePostOrderMutation,
   useDeleteOrderMutation,
+  useGetProfileImageQuery,
+  usePostProfileImageMutation,
 } = shiftsApi;

@@ -1,5 +1,5 @@
 import * as ImagePicker from 'expo-image-picker'
-import { Image, Pressable, Text, View, TextInput } from 'react-native'
+import { Image, Pressable, Text, View, TextInput, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCameraImage } from '../../features/auth/authSlice'
@@ -14,7 +14,6 @@ const Profile = ({ navigation }) => {
   const [country, setCountry] = useState('');
   const [province, setProvince] = useState('');
   const [gender, setGender] = useState('');
-  const genders = ['Hombre', 'Mujer'];
 
 
   const image = useSelector(state => state.auth.imageCamera)
@@ -31,7 +30,8 @@ const Profile = ({ navigation }) => {
   }
 
   const pickImage = async () => {
-    const isCameraOk = await verifyCameraPermissions()
+    const isCameraOk = await verifyCameraPermissions();
+
     if (isCameraOk) {
       let result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -46,6 +46,12 @@ const Profile = ({ navigation }) => {
           setCameraImage(`data:image/jpeg;base64,${result.assets[0].base64}`)
         )
       }
+    } else {
+      // Para permisos denegados
+      Alert.alert(
+        'Permisos de cámara requeridos',
+        'Por favor, habilite los permisos de cámara en la configuración de la aplicación.',
+      );
     }
   }
 
@@ -54,6 +60,7 @@ const Profile = ({ navigation }) => {
     triggerSaveProfileImage({ image, localId })
     console.log(result)
   }
+
 
   return (
     <View style={styles.container}>
@@ -78,7 +85,7 @@ const Profile = ({ navigation }) => {
         />
       )}
       <Pressable style={styles.cameraButton} onPress={pickImage}>
-        <Feather name="camera" size={24} color="black" />{/* Icono de la cámara de Feather Icons */}
+        <Feather name="camera" size={24} color="black" />
       </Pressable>
 
 

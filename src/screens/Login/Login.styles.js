@@ -10,7 +10,7 @@ export default styles = StyleSheet.create({
   },
   tittle: {
     fontSize: 25,
-    fontFamily: "MulishBold"
+    fontFamily: "MulishBold",
   },
   loginContainer: {
     width: "100%",
@@ -33,18 +33,10 @@ export default styles = StyleSheet.create({
     borderRadius: 5,
     fontSize: 17,
   },
-  inputEmail: {
-    width: "95%",
-    backgroundColor: colors.secondary,
-    borderColor: colors.primary,
-    borderWidth: 1,
-    height: 30,
-    marginVertical: 15,
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    borderRadius: 5,
-    fontSize: 17,
+  alertText: {
+    color: colors.tertiary,
+    fontFamily: "MulishBold",
+    marginBottom: 10,
   },
   loginButton: {
     backgroundColor: colors.primary,
@@ -66,7 +58,7 @@ export default styles = StyleSheet.create({
     color: colors.secondary,
     fontFamily: "MulishBold",
   },
-  questionAccount:{
+  questionAccount: {
     fontSize: 15,
   },
 });

@@ -8,5 +8,7 @@ export default styles = StyleSheet.create({
   },
   listContainer: {
     alignItems: "center",
+    marginTop: 20,
+
   }
 });

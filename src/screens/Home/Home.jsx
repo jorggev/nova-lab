@@ -10,7 +10,7 @@ const Home = ({ navigation }) => {
   const { data, isLoading } = useGetCategoriesQuery()
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={'Especialidades'} />
+      <Header title={'ESPECIALIDADES'} />
       <View style={styles.listContainer}>
         {!isLoading && (
           <FlatList

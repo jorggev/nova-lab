@@ -4,12 +4,17 @@ import { setUser } from '../../features/auth/authSlice'
 import styles from './Login.styles'
 import { useDispatch } from 'react-redux'
 import { useLoginMutation } from '../../services/authApi'
+import Feather from '@expo/vector-icons/Feather'
+import { colors } from '../../constants/colors'
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [triggerLogin, result] = useLoginMutation()
     const dispatch = useDispatch()
+
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const onSubmit = () => {
         console.log(email, password)
@@ -23,6 +28,7 @@ const Login = ({ navigation }) => {
         }
     }
 
+
     return (
         <View style={styles.container}>
             <View style={styles.loginContainer}>
@@ -32,11 +38,27 @@ const Login = ({ navigation }) => {
                     placeholder="Correo electrónico"
                     value={email}
                     onChangeText={setEmail} />
+                {/*                 <TextInput
+                    style={styles.inputEmail}
+                    placeholder="Contraseña"
+                    value={password}
+                    onChangeText={setPassword} /> */}
                 <TextInput
                     style={styles.inputEmail}
                     placeholder="Contraseña"
                     value={password}
-                    onChangeText={setPassword} />
+                    onChangeText={setPassword}
+                    secureTextEntry={!showPassword}
+                />
+                <Pressable
+                    onPress={() => setShowPassword(!showPassword)}
+                    style={styles.togglePasswordVisibility}>
+                    {showPassword ? (
+                        <Feather name="eye" size={24} color={colors.primary} />
+                    ) : (
+                        <Feather name="eye-off" size={24} color={colors.primary} />
+                    )}
+                </Pressable>
                 <Pressable
                     style={styles.loginButton}
                     onPress={onSubmit}>

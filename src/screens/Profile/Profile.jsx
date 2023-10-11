@@ -1,12 +1,22 @@
 import * as ImagePicker from 'expo-image-picker'
-import { Image, Pressable, Text, View } from 'react-native'
+import { Image, Pressable, Text, View, TextInput } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCameraImage } from '../../features/auth/authSlice'
 import styles from './Profile.styles'
 import { usePostProfileImageMutation } from '../../services/shiftsApi'
+import { Header } from '../../components'
+import { Feather } from '@expo/vector-icons';
 
 const Profile = ({ navigation }) => {
+  const [age, setAge] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [province, setProvince] = useState('');
+  const [gender, setGender] = useState('');
+  const genders = ['Hombre', 'Mujer'];
+
+
   const image = useSelector(state => state.auth.imageCamera)
   const { localId } = useSelector(state => state.auth)
   const [triggerSaveProfileImage, result] = usePostProfileImageMutation()
@@ -47,6 +57,9 @@ const Profile = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+
+      <Header title={'PERFIL'} />
+
       {image ? (
         <Image
           source={{
@@ -58,24 +71,70 @@ const Profile = ({ navigation }) => {
       ) : (
         <Image
           source={{
-            uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            uri: 'https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-768x768.jpg',
           }}
           style={styles.image}
           resizeMode="cover"
         />
       )}
       <Pressable style={styles.cameraButton} onPress={pickImage}>
-        <Text>Tomar Foto de perfil</Text>
+        <Feather name="camera" size={24} color="black" />{/* Icono de la cámara de Feather Icons */}
       </Pressable>
-      <Pressable style={styles.cameraButton} onPress={confirmImage}>
-        <Text>Confirmar</Text>
+
+
+      <View style={styles.inputsContainer}>
+        <Text style={styles.label}>Edad:</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={age}
+          onChangeText={(text) => setAge(text)}
+        />
+
+        <Text style={styles.label}>País:</Text>
+        <TextInput
+          style={styles.input}
+          value={country}
+          onChangeText={(text) => setCountry(text)}
+        />
+
+        <Text style={styles.label}>Provincia:</Text>
+        <TextInput
+          style={styles.input}
+          value={province}
+          onChangeText={(text) => setProvince(text)}
+        />
+
+        <Text style={styles.label}>Ciudad:</Text>
+        <TextInput
+          style={styles.input}
+          value={city}
+          onChangeText={(text) => setCity(text)}
+        />
+
+        <Text style={styles.label}>Género:</Text>
+        <TextInput
+          style={styles.input}
+          value={gender}
+          onChangeText={(text) => setGender(text)}
+        />
+
+      </View>
+
+      {/*       <View>
+        <Pressable
+          style={{ ...styles.cameraButton, marginTop: 20 }}
+          onPress={() => navigation.navigate('Location')}
+        >
+          <Text>Ir a mi ubiacion</Text>
+        </Pressable>
+
+      </View> */}
+
+      <Pressable style={styles.buttonConfirmProfile} onPress={confirmImage}>
+        <Text style={styles.buttonTextConfirmProfile}>Confirmar cambios</Text>
       </Pressable>
-      <Pressable
-        style={{ ...styles.cameraButton, marginTop: 20 }}
-        onPress={() => navigation.navigate('Location')}
-      >
-        <Text>Ir a mi ubiacion</Text>
-      </Pressable>
+
     </View>
   )
 }

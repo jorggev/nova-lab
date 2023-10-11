@@ -4,7 +4,6 @@ import { colors } from "../../constants/colors";
 export default styles = StyleSheet.create({
   container: {
     backgroundColor: colors.secondary,
-    alignItems: "stretch",
   },
   image: {
     height: 300,
@@ -23,6 +22,9 @@ export default styles = StyleSheet.create({
     fontFamily: "MulishBlack",
     textAlign: "center",
   },
+  especiality: {
+    margin: 5,
+  },
   price: {
     fontSize: 20,
     margin: 5,
@@ -30,6 +32,7 @@ export default styles = StyleSheet.create({
   },
   bio: {
     margin: 5,
+    marginTop: 20,
     fontFamily: "MulishBold",
   },
   turno: {
@@ -38,6 +41,7 @@ export default styles = StyleSheet.create({
   },
   turnoSeleccionado: {
     backgroundColor: colors.primary,
+    color: "black"
   },
   turnoText: {
     fontSize: 16,

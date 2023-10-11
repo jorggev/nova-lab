@@ -4,11 +4,14 @@ import { setUser } from '../../features/auth/authSlice'
 import { useDispatch } from 'react-redux'
 import { useSignUpMutation } from '../../services/authApi'
 import styles from './Signup.styles'
+import Feather from '@expo/vector-icons/Feather'
+import { colors } from '../../constants/colors'
 
 const Signup = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
+    const [showPassword, setShowPassword] = useState(false);
     const [triggerSignup, result] = useSignUpMutation()
     const dispatch = useDispatch()
 
@@ -36,11 +39,22 @@ const Signup = ({ navigation }) => {
                 <TextInput style={styles.inputEmail}
                     value={password}
                     onChangeText={setPassword}
-                    placeholder="Contraseña" />
+                    placeholder="Contraseña"
+                    secureTextEntry={!showPassword} />
                 <TextInput style={styles.inputEmail}
                     value={confirmPass}
                     onChangeText={setConfirmPass}
-                    placeholder="Repetir contraseña" />
+                    placeholder="Repetir contraseña"
+                    secureTextEntry={!showPassword} />
+                <Pressable
+                    onPress={() => setShowPassword(!showPassword)}
+                    style={styles.togglePasswordVisibility}>
+                    {showPassword ? (
+                        <Feather name="eye" size={24} color={colors.primary} />
+                    ) : (
+                        <Feather name="eye-off" size={24} color={colors.primary} />
+                    )}
+                </Pressable>
                 <Pressable style={styles.loginButton} onPress={onSubmit}>
                     <Text style={styles.textSignup}>Registrarse</Text>
                 </Pressable>

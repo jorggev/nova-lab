@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import styles from './Details.style'
-import { Image, Text, TouchableOpacity, View, TouchableHighlight } from 'react-native'
+import { Image, Text, TouchableOpacity, View, TouchableHighlight, ScrollView } from 'react-native'
 import { Header } from '../../components'
 import { useDispatch, useSelector } from 'react-redux';
 import { reserveShifts } from '../../features/shifts/shiftSlice';
 import { usePostOrderMutation } from '../../services/shiftsApi';
+import { colors } from '../../constants/colors';
 
 
 const Details = ({ route }) => {
@@ -58,11 +59,11 @@ const Details = ({ route }) => {
 
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'stretch' }}>
       <Header title={'Detalles'} />
       <Image style={styles.image} source={{ uri: product.images[0] }} />
       <Text style={styles.title}>{product.title}</Text>
-      <Text>Especialidad: {product.brand}</Text>
+      <Text style={styles.especiality}>Especialidad: {product.brand}</Text>
       <Text style={styles.bio}>BIOGRAFÍA</Text>
       <Text style={styles.description}>{product.description}</Text>
 
@@ -71,20 +72,23 @@ const Details = ({ route }) => {
 
       <Text style={styles.bio}>Turnos Disponibles:</Text>
       {product.turnos && product.turnos.length > 0 ? (
-        <View>
-          {product.turnos.map((turno, index) => (
-            <TouchableHighlight
-              key={index}
-              style={[
-                styles.turno,
-                turnoSeleccionado === index && styles.turnoSeleccionado,
-              ]}
-              onPress={() => handleTurnoSeleccionado(index)}
-              underlayColor="whitesmoke">
-              <Text style={styles.turnoText}>{`${turno.dia}: ${turno.horario}`}</Text>
-            </TouchableHighlight>
-          ))}
-        </View>
+  <View>
+  {product.turnos.map((turno, index) => (
+    <TouchableHighlight
+      key={index}
+      style={[
+        styles.turno,
+        turnoSeleccionado === index && styles.turnoSeleccionado,
+      ]}
+      onPress={() => handleTurnoSeleccionado(index)}
+      underlayColor="whitesmoke">
+      <Text style={[
+        styles.turnoText,
+        turnoSeleccionado === index && { color: colors.secondary}, // Aplica blanco solo al seleccionado
+      ]}>{`${turno.dia}: ${turno.horario}`}</Text>
+    </TouchableHighlight>
+  ))}
+</View>
       ) : (
         <Text style={styles.turno}>No hay turnos disponibles</Text>
       )}
@@ -92,7 +96,7 @@ const Details = ({ route }) => {
       <TouchableOpacity style={styles.reserveContainer} onPress={handleReserveTurno}>
         <Text style={styles.reserve}>RESERVAR TURNO</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView >
   )
 }
 

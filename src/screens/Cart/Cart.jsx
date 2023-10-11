@@ -4,12 +4,14 @@ import CartItem from './components/Cartitem'
 import React from 'react'
 import dataCart from '../../data/dataCart'
 import styles from './Cart.styles'
+import { Header } from '../../components'
 
 const Cart = () => {
   const renderItem = () => <CartItem />
 
   return (
     <View style={styles.container}>
+            <Header title={'PROFESIONALES'} />
       <View>
         <FlatList
           data={dataCart}

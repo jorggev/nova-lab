@@ -6,26 +6,33 @@ import { useDispatch } from 'react-redux'
 import { useLoginMutation } from '../../services/authApi'
 import Feather from '@expo/vector-icons/Feather'
 import { colors } from '../../constants/colors'
+import { insertSession } from '../../db'
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [triggerLogin, result] = useLoginMutation()
+    const [triggerLogin] = useLoginMutation()
     const dispatch = useDispatch()
 
     const [showPassword, setShowPassword] = useState(false);
 
 
     const onSubmit = () => {
-        console.log(email, password)
         triggerLogin({
             email,
             password,
         })
-        console.log(result)
-        if (result.isSuccess) {
-            dispatch(setUser(result))
-        }
+            .unwrap()
+            .then(result => {
+                dispatch(setUser(result))
+                insertSession({
+                    localId: result.localId,
+                    email: result.email,
+                    token: result.idToken,
+                })
+                    .then(result => console.log(result))
+                    .catch(error => console.log(error.message))
+            })
     }
 
 
@@ -38,11 +45,6 @@ const Login = ({ navigation }) => {
                     placeholder="Correo electrónico"
                     value={email}
                     onChangeText={setEmail} />
-                {/*                 <TextInput
-                    style={styles.inputEmail}
-                    placeholder="Contraseña"
-                    value={password}
-                    onChangeText={setPassword} /> */}
                 <TextInput
                     style={styles.inputEmail}
                     placeholder="Contraseña"

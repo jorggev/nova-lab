@@ -9,17 +9,21 @@ const Products = ({ navigation }) => {
 
   const category = useSelector(state => state.shifts.categorySelected)
   const [keyword, setKeyword] = useState('')
+  const [products, setProducts] = useState([])
   const { data, isLoading } = useGetProductsByCategoryQuery(category)
 
-/*   useEffect(() => {
-    console.log(category)
-    if (data) {
-      const productsFiltered = data.filter(product =>
+
+  useEffect(() => {
+    console.log(data, isLoading)
+    if (!isLoading) {
+      const dataArr = Object.values(data)
+      setProducts(dataArr)
+      const productsFiltered = dataArr.filter(product =>
         product.title.includes(keyword)
       )
+      setProducts(productsFiltered)
     }
-  }, []) */
-
+  }, [isLoading, keyword])
 
   return (
     <View style={styles.container}>
@@ -28,7 +32,7 @@ const Products = ({ navigation }) => {
       <View style={styles.listContainer}>
         {!isLoading && (
           <FlatList
-            data={Object.values(data)}
+            data={products}
             renderItem={({ item }) => (
               <TouchableOpacity
                 onPress={() => navigation.navigate('Details', { product: item })}

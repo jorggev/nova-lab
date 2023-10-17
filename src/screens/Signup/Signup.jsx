@@ -12,7 +12,8 @@ const Signup = ({ navigation }) => {
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
     const [showPassword, setShowPassword] = useState(false);
-    const [triggerSignup, result] = useSignUpMutation()
+    // const [triggerSignup, result] = useSignUpMutation()
+    const [triggerSignup] = useSignUpMutation()
     const dispatch = useDispatch()
 
     const onSubmit = () => {
@@ -21,10 +22,12 @@ const Signup = ({ navigation }) => {
             email,
             password,
         })
-        console.log(result)
-        if (result.isSuccess) {
-            dispatch(setUser(result))
-        }
+        .unwrap()
+        .then(result => {
+          console.log(result)
+          dispatch(setUser(result))
+        })
+        .catch(err => console.log(err))
     }
 
     return (

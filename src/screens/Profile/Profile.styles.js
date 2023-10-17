@@ -35,7 +35,6 @@ export default styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonTextConfirmProfile: {
-    margin: 5,
     marginTop: 20,
     fontSize: 20,
     padding: 5,
@@ -44,6 +43,23 @@ export default styles = StyleSheet.create({
     width: "75%",
     color: colors.secondary,
     backgroundColor: colors.primary,
+    fontFamily: "MulishBlack",
+  },
+  buttonLogOut: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonTextLogOut: {
+    marginTop: 20,
+    marginBottom: 20,
+    fontSize: 20,
+    padding: 5,
+    borderRadius: 5,
+    textAlign: "center",
+    width: "75%",
+    color: colors.secondary,
+    backgroundColor: "red",
     fontFamily: "MulishBlack",
   },
 });

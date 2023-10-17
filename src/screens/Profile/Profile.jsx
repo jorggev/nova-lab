@@ -1,5 +1,5 @@
 import * as ImagePicker from 'expo-image-picker'
-import { Image, Pressable, Text, View, TextInput, Alert } from 'react-native'
+import { Image, Pressable, Text, View, TextInput, Alert, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCameraImage } from '../../features/auth/authSlice'
@@ -7,6 +7,8 @@ import styles from './Profile.styles'
 import { usePostProfileImageMutation } from '../../services/shiftsApi'
 import { Header } from '../../components'
 import { Feather } from '@expo/vector-icons';
+import { clearUser } from '../../features/auth/authSlice'
+import { deleteSession } from '../../db'
 
 const Profile = ({ navigation }) => {
   const [age, setAge] = useState('');
@@ -61,9 +63,14 @@ const Profile = ({ navigation }) => {
     console.log(result)
   }
 
+  const logout = () => {
+    dispatch(clearUser())
+    deleteSession()
+  }
+
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
 
       <Header title={'PERFIL'} />
 
@@ -128,21 +135,15 @@ const Profile = ({ navigation }) => {
 
       </View>
 
-      {/*       <View>
-        <Pressable
-          style={{ ...styles.cameraButton, marginTop: 20 }}
-          onPress={() => navigation.navigate('Location')}
-        >
-          <Text>Ir a mi ubiacion</Text>
-        </Pressable>
-
-      </View> */}
-
       <Pressable style={styles.buttonConfirmProfile} onPress={confirmImage}>
         <Text style={styles.buttonTextConfirmProfile}>Confirmar cambios</Text>
       </Pressable>
 
-    </View>
+      <Pressable style={styles.buttonLogOut} onPress={logout}>
+        <Text style={styles.buttonTextLogOut}>CERRAR SESION</Text>
+      </Pressable>
+
+    </ScrollView>
   )
 }
 

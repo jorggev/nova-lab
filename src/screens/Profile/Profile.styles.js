@@ -2,32 +2,21 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../constants/colors";
 
 export default styles = StyleSheet.create({
-  container: {},
+  container: {
+  },
+  profileImage: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   image: {
-    width: 180,
-    height: 200,
+    width: 380,
+    height: 500,
     borderRadius: 15,
     margin: 10,
   },
   cameraButton: {
-    justifyContent: "center",
-    marginLeft: 85,
-    marginBottom: 20,
-  },
-  inputsContainer: {
-    margin: 5,
-  },
-  label: {
-    fontFamily: "MulishBold",
-  },
-  input: {
-    backgroundColor: colors.secondary,
-    borderColor: colors.primary,
-    borderWidth: 1,
-    margin: 10,
-    textAlign: "center",
-    borderRadius: 5,
-    fontSize: 15,
+
   },
   buttonConfirmProfile: {
     width: "100%",

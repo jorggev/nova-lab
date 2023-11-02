@@ -11,7 +11,6 @@ function ProfileNavigator() {
             })}
         >
             <ProfileStack.Screen name="Profile" component={Profile} />
-            <ProfileStack.Screen name="Location" component={LocationScreen} />
         </ProfileStack.Navigator>
     )
 }

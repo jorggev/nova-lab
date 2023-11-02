@@ -1,4 +1,3 @@
-import CartNavigator from './CartNavigator'
 import Feather from '@expo/vector-icons/Feather'
 import OrdersNavigator from './OrdersNavigator'
 import StackNavigator from './StackNavigator'
@@ -26,19 +25,6 @@ function BottomTabNavigator() {
                     tabBarIcon: ({ focused }) => (
                         <Feather
                             name="home"
-                            size={24}
-                            color={focused ? colors.primary : colors.quaternary}
-                        />
-                    ),
-                }}
-            />
-            <BottomTab.Screen
-                name="CartNav"
-                component={CartNavigator}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name="menu"
                             size={24}
                             color={focused ? colors.primary : colors.quaternary}
                         />
